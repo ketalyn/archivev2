@@ -1,0 +1,409 @@
+html {
+    margin: 0;
+    font-size: 10px;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+main{
+    width: 100vw;
+    overflow: hidden;
+}
+
+canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2; /* Adjust the z-index as needed */
+}
+
+
+.main-title{
+    height: 90%;
+    width: 90%;
+}
+
+.bold {
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 500;
+    font-size: 12rem;
+    line-height: 0.1;
+}
+
+.italic {
+    font-family: 'Rhetorik Serif', serif;
+    font-style: italic;
+    font-size: 12rem;
+    line-height: 0.1;
+    font-weight: 100;
+}
+
+.main-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1; /* Ensure the title is above the canvas */
+    text-align: center;
+}
+
+.OBJECTS{
+    margin-left: -55%;
+    margin-top: 1%;
+}
+
+.THAT{
+    margin-left: -5%;
+    margin-top: -1%;
+}
+
+.MOVE1{
+    margin-left: -18%;
+    margin-top: -1%;
+}
+
+.AND{
+    margin-left: -58%;
+    margin-top: -1%;
+}
+
+.DONT{
+    margin-left: -20%;
+    margin-top: -1%;
+}
+
+.MOVE2{
+    margin-left: 15%;
+    margin-top: -1%;
+}
+
+.moveobjects {
+    width: 200px;
+    position: relative;
+}
+
+.starface {
+    position: absolute;
+    top: -650px; /* Adjust the top positioning to move it higher up */
+    left: 650px;
+}
+
+.starface img {
+    max-width: 700px; /* Adjust the maximum width of the image */
+    height: auto;
+}
+
+.starfacegif {
+    position: absolute;
+    top: -650px; /* Adjust the top positioning to match starface */
+    left: 650px; /* Adjust the left positioning to match starface */
+    display: none; /* Initially hide the gif */
+}
+
+.starface:hover + .starfacegif {
+    display: block; /* Display the gif when hovering over the starface image */
+}
+
+.starface:hover {
+    display: none; /* Hide the starface image on hover */
+}
+
+
+.starfacegif img {
+    max-width: 700px; /* Adjust the maximum width of the image */
+    height: auto;
+}
+
+
+.herbalcandy img {
+    max-width: 700px; /* Adjust the maximum width of the image */
+    height: auto;
+}
+
+.herbalcandy {
+    position: absolute;
+    top: -500px; /* Adjust the top positioning to move it higher up */
+    left: 800px;
+}
+
+.sunglassescase img {
+    max-width: 450px; /* Adjust the maximum width of the image */
+    height: auto;
+}
+
+.sunglassescase {
+    position: absolute;
+    top: -250px; /* Adjust the top positioning to move it higher up */
+    left: 0px;
+}
+
+.toothbrush img {
+    max-width: 500px; /* Adjust the maximum width of the image */
+    height: auto;
+    transform: rotate(-10deg);
+}
+
+.toothbrush {
+    position: absolute;
+    top: -700px; /* Adjust the top positioning to move it higher up */
+    left: 20px;
+}
+
+.toothbrush:hover img {
+    transform: rotate(-20deg); /* Adjust the rotation angle as needed */
+}
+
+
+
+#allItemsButton {
+    position: absolute;
+    top: -20px; /* Adjust the top position as needed */
+    right: 0%; /* Adjust the left position as needed */
+    z-index: 10; /* Ensure the button is above other elements */
+    background-color: rgb(255, 255, 255);
+    font-family: 'Work Sans', sans-serif;
+    font-size: 2.5rem;
+    border-radius: 20px; /* Adjust the radius as needed */
+    padding: 10px 20px; /* Adjust padding as needed */
+    border: 2px solid rgb(0, 0, 0); /* Add outline around the button */
+    text-decoration: none; /* Remove underline */
+    color: rgb(0, 0, 0); /* Change text color to match outline */
+}
+
+
+
+
+
+@media screen and (max-width: 375px) {
+    .mobile-image--left,
+    .mobile-image--right {
+        display: block;
+    }
+
+    .flex-container {
+        flex-direction: column;
+    }
+
+    .text-overlay {
+        font-size: 6vw;
+    }
+
+    .text-container{
+        bottom: 12%;
+        right: 5%; 
+    }
+
+    .bold {
+        font-family: 'Work Sans', sans-serif;
+        font-weight: 500;
+        font-size: 6rem;
+        line-height: 0.1;
+    }
+    
+    .italic {
+        font-family: 'Rhetorik Serif', serif;
+        font-style: italic;
+        font-size: 6rem;
+        line-height: 0.1;
+        font-weight: 100;
+    }
+    
+    .main-title {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1; /* Ensure the title is above the canvas */
+        text-align: center;
+    }
+
+    .OBJECTS{
+        margin-left: 16%;
+        margin-top: 25%;
+    }
+    
+    .THAT{
+        margin-left: 50%;
+        margin-top: -1%;
+    }
+    
+    .MOVE1{
+        margin-left: -18%;
+        margin-top: -1%;
+    }
+    
+    .AND{
+        margin-left: -58%;
+        margin-top: -1%;
+    }
+    
+    .DONT{
+        margin-left: -20%;
+        margin-top: -1%;
+    }
+    
+    .MOVE2{
+        margin-left: 15%;
+        margin-top: -1%;
+    }
+
+    #allItemsButton {
+        position: absolute;
+        top: -20px; /* Adjust the top position as needed */
+        right: 0%; /* Adjust the left position as needed */
+        z-index: 10; /* Ensure the button is above other elements */
+        background-color: rgb(255, 255, 255);
+        font-family: 'Work Sans', sans-serif;
+        font-size: 2rem;
+        border-radius: 20px; /* Adjust the radius as needed */
+        padding: 5px 12px; /* Adjust padding as needed */
+        border: 2px solid rgb(0, 0, 0); /* Add outline around the button */
+        text-decoration: none; /* Remove underline */
+        color: rgb(0, 0, 0); /* Change text color to match outline */
+    }
+
+    .sunglassescase img {
+        max-width: 250px; /* Adjust the maximum width of the image */
+        height: auto;
+    }
+    
+    .sunglassescase {
+        position: absolute;
+        top: -50px; /* Adjust the top positioning to move it higher up */
+        left: 130px;
+    }
+
+    .starface img {
+        max-width: 200px; /* Adjust the maximum width of the image */
+        height: auto;
+    }
+
+    .starface {
+        position: absolute;
+        top: -490px; /* Adjust the top positioning to move it higher up */
+        left: -50px;
+    }
+    
+    .starfacegif {
+        position: absolute;
+        top: -490px; /* Adjust the top positioning to match starface */
+        left: -50px; /* Adjust the left positioning to match starface */
+        display: none; /* Initially hide the gif */
+    }
+
+    .starfacegif img {
+        max-width: 200px; /* Adjust the maximum width of the image */
+        height: auto;
+    }
+
+    .toothbrush img {
+        max-width: 200px; /* Adjust the maximum width of the image */
+        height: auto;
+        transform: rotate(-10deg);
+    }
+    
+    .toothbrush {
+        position: absolute;
+        top: -350px; /* Adjust the top positioning to move it higher up */
+        left: -15px;
+    }
+
+    .herbalcandy img {
+        max-width: 220px; /* Adjust the maximum width of the image */
+        height: auto;
+    }
+    
+    .herbalcandy {
+        position: absolute;
+        top: -260px; /* Adjust the top positioning to move it higher up */
+        left: 170px;
+    }
+}
+
+@media screen and (min-width: 1512px) {
+    .bold {
+        font-family: 'Work Sans', sans-serif;
+        font-weight: 500;
+        font-size: 12rem;
+        line-height: 0.1;
+    }
+    
+    .italic {
+        font-family: 'Rhetorik Serif', serif;
+        font-style: italic;
+        font-size: 12rem;
+        line-height: 0.1;
+        font-weight: 100;
+    }
+    
+    .main-title {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1; /* Ensure the title is above the canvas */
+        text-align: center;
+    }
+    
+    .OBJECTS{
+        margin-left: -55%;
+        margin-top: 1%;
+    }
+    
+    .THAT{
+        margin-left: -5%;
+        margin-top: -1%;
+    }
+    
+    .MOVE1{
+        margin-left: -18%;
+        margin-top: -1%;
+    }
+    
+    .AND{
+        margin-left: -58%;
+        margin-top: -1%;
+    }
+    
+    .DONT{
+        margin-left: -20%;
+        margin-top: -1%;
+    }
+    
+    .MOVE2{
+        margin-left: 15%;
+        margin-top: -1%;
+    }
+
+    .starface img {
+        max-width: 200px; /* Adjust the maximum width of the image */
+        height: auto;
+    }
+
+    .starface {
+        position: absolute;
+        top: -490px; /* Adjust the top positioning to move it higher up */
+        left: -50px;
+    }
+    
+    .starfacegif {
+        position: absolute;
+        top: -450px; /* Adjust the top positioning to match starface */
+        left: 100px; /* Adjust the left positioning to match starface */
+        display: none; /* Initially hide the gif */
+    }
+
+    .starfacegif img {
+        max-width: 200px; /* Adjust the maximum width of the image */
+        height: auto;
+    }
+}
+
+
+@font-face {
+    font-family: 'Compagnon';
+    src: url('/assets/RhetorikSerif-LightItalic-trial.otf') format('woff2');
+}

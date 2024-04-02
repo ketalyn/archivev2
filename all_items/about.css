@@ -1,0 +1,217 @@
+html {
+    margin: 0;
+    font-size: 10px;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+main{
+    width: 100vw;
+    overflow: hidden;
+}
+
+canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2; /* Adjust the z-index as needed */
+}
+
+
+.main-title{
+    height: 90%;
+    width: 90%;
+}
+
+.bold {
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 500;
+    font-size: 12rem;
+    line-height: 0.1;
+}
+
+.italic {
+    font-family: 'Rhetorik Serif', serif;
+    font-style: italic;
+    font-size: 12rem;
+    line-height: 0.1;
+    font-weight: 100;
+}
+
+.main-page-link {
+    text-decoration: none; /* Remove underline */
+    color: inherit; /* Inherit text color from its parent */
+}
+
+.main-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1; /* Ensure the title is above the canvas */
+    text-align: center;
+}
+
+.OBJECTS {
+    margin-left: -55%;
+    margin-top: 0%; /* Adjusted margin-top */
+    margin-bottom: 5%;
+    z-index: 10;
+    background-color: rgb(255, 255, 255);
+    font-family: 'Work Sans', sans-serif;
+    font-size: 12rem;
+    border-radius: 40px;
+    padding: 70px 20px 0px; /* Adjusted padding */
+    border: 2px solid rgb(0, 0, 0);
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    display: inline-block;
+    height: 100px; /* Set a fixed height */
+}
+
+
+.THAT{
+    margin-left: 20%;
+    margin-top: -12.5%;
+}
+
+.MOVE1{
+    margin-left: -18%;
+    margin-top: 12%;
+}
+
+.MOVE1:hover {
+    transform: rotate(5deg); /* Rotate MOVE1 by 5 degrees on hover */
+}
+
+
+.AND{
+    margin-left: 35%;
+    margin-top: -10%;
+}
+
+.DONT{
+    margin-left: -75%;
+    margin-top: 12%;
+}
+
+.MOVE2{
+    margin-left: -20%;
+    margin-top: -10%;
+}
+
+.explanation{
+    font-family: 'Work Sans', sans-serif;
+    text-transform: uppercase;
+    font-size: 3rem;
+}
+
+
+
+
+
+@media screen and (max-width: 499px) {
+    .mobile-image--left,
+    .mobile-image--right {
+        display: block;
+    }
+
+    .flex-container {
+        flex-direction: column;
+    }
+
+    .text-overlay {
+        font-size: 6vw;
+    }
+
+    .text-container{
+        bottom: 12%;
+        right: 5%; 
+    }
+
+    .bold {
+        font-family: 'Work Sans', sans-serif;
+        font-weight: 500;
+        font-size: 6rem;
+        line-height: 0.1;
+    }
+    
+    .italic {
+        font-family: 'Rhetorik Serif', serif;
+        font-style: italic;
+        font-size: 6rem;
+        line-height: 0.1;
+        font-weight: 100;
+    }
+
+    .OBJECTS {
+        margin-left: -10%;
+        margin-top: 0%; /* Adjusted margin-top */
+        margin-bottom: 5%;
+        z-index: 10;
+        background-color: rgb(255, 255, 255);
+        font-family: 'Work Sans', sans-serif;
+        font-size: 6rem;
+        border-radius: 40px;
+        padding: 30px 20px 0px; /* Adjusted padding */
+        border: 2px solid rgb(0, 0, 0);
+        text-decoration: none;
+        color: rgb(0, 0, 0);
+        display: inline-block;
+        height: 40px; /* Set a fixed height */
+    }
+
+    .THAT{
+        margin-left: 15%;
+        margin-top: 5%;
+    }
+    
+    .MOVE1{
+        margin-left: -18%;
+        margin-top: 10%;
+    }
+    
+    .MOVE1:hover {
+        transform: rotate(5deg); /* Rotate MOVE1 by 5 degrees on hover */
+    }
+    
+    
+    .AND{
+        margin-left: 35%;
+        margin-top: 15%;
+    }
+    
+    .DONT{
+        margin-left: -20%;
+        margin-top: 15%;
+    }
+    
+    .MOVE2{
+        margin-left: 30%;
+        margin-top: 15%;
+    }
+}
+
+@media screen and (min-width: 950px) {
+    .desktop-image--left,
+    .desktop-image--right {
+        display: block;
+    }
+
+    .text-overlay {
+        font-size: 1.8vw;
+    }
+
+    .text-container{
+        bottom: 35%;
+        right: 5%; 
+    }
+}
+
+@font-face {
+    font-family: 'Compagnon';
+    src: url('/assets/RhetorikSerif-LightItalic-trial.otf') format('woff2');
+}

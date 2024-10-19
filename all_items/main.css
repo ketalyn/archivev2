@@ -6,12 +6,15 @@ html {
 
 body {
     margin: 0;
+    background-color: none;
 }
 
 main {
     width: 100vw;
     overflow: visible;
-    background-color: rgb(255, 255, 255);
+    background-color: none;
+    display:flex;
+    flex-direction: column;
 }
 
 canvas {
@@ -19,32 +22,36 @@ canvas {
     top: 0;
     left: 0;
     z-index: 2; /* Adjust the z-index as needed */
+    background-color: none;
 }
 
 .about-page-link {
     text-decoration: none; /* Remove underline */
-    color: inherit;
-    height: 90%;
-    width: 90%;
+    background-color: none;
+    height: 20%;
+    width: 50%;
     position: absolute;
-    top: 50%;
-    left: 40%;
+    top: 12%;
+    left: 30.8%;
     transform: translate(-50%, -50%);
     z-index: 1; /* Ensure the title is above the canvas */
     text-align: center;
 }
 
 .ABOUT {
-    margin-left: -60%;
-    margin-top: 1%;
+    margin-left: 0%;
+    margin-top: 5%;
     font-size: 10rem;
+    width:30%;
+    background-color: none;
+    color:black;
 }
 
 .main-title {
-    height: 90%;
-    width: 90%;
+    height: 40%;
+    width: 100%;
     position: absolute;
-    top: 59%;
+    top: 34%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 1; /* Ensure the title is above the canvas */
@@ -72,42 +79,42 @@ canvas {
 }
 
 .OBJECTS {
-    margin-left: -60%;
+    margin-left: -53.3%;
     margin-top: 1%;
 }
 
 /* Adjust styling for the color filter */
 #colorFilter {
     position: absolute;
-    top: -20px; /* Adjust the top position as needed */
-    right: 0%; /* Adjust the right position as needed */
+    top: -19.8%; /* Adjust the top position as needed */
+    right: 2.8%; /* Adjust the right position as needed */
 }
 
 /* Adjust styling for the material filter */
 #materialFilter {
     position: absolute;
-    top: -20px; /* Adjust the top position as needed */
-    right: 13%; /* Adjust the right position as needed */
+    top: -16.8%; /* Adjust the top position as needed */
+    right: 15%; /* Adjust the right position as needed */
 }
 
 /* Adjust styling for the MDM filter */
 #MDMFilter {
     position: absolute;
-    top: -20px; /* Adjust the top position as needed */
-    right: 30%; /* Adjust the right position as needed */
+    top: -8.7%; /* Adjust the top position as needed */
+    right: 31%; /* Adjust the right position as needed */
 }
 
 /* Adjust width of filter buttons within dropdown menus */
 #colorFilter .dropdown-content button {
-    width: calc(100% - 20px); /* Adjust width to match color filter */
+    width: calc(80%); /* Adjust width to match color filter */
 }
 
 #materialFilter .dropdown-content button {
-    width: calc(100% - 10px); /* Adjust width to match material filter */
+    width: calc(100%); /* Adjust width to match material filter */
 }
 
 #MDMFilter .dropdown-content button {
-    width: calc(100% - 40px); /* Adjust width to match MDM filter */
+    width: calc(142%); /* Adjust width to match MDM filter */
 }
 
 /* Add this CSS to your existing styles */
@@ -116,7 +123,7 @@ canvas {
 #MDMFilter button {
     position: relative;
     display: block;
-    margin-bottom: 10px; /* Add margin between MDM filter buttons */
+    margin-bottom: 0px; /* Add margin between MDM filter buttons */
 }
 
 .filterButton.active.inverted {
@@ -135,6 +142,14 @@ canvas {
     cursor: pointer;
     background-color: rgb(255, 255, 255);
     color: rgb(0, 0, 0);
+    margin-top:-17%;
+}
+
+/* Style for active dropdown button */
+.dropbtn.active {
+    background-color: #000; /* Change background color */
+    color: #fff;            /* Change text color */
+    border: 2px solid #fff;  /* Adjust border for better visibility */
 }
 
 /* Dropdown container (hidden by default) */
@@ -144,7 +159,7 @@ canvas {
     background-color: none;
     min-width: 160px;
     z-index: 1;
-    padding: 10px;
+    padding: 0px;
 }
 
 /* Show the dropdown menu on hover */
@@ -165,7 +180,7 @@ canvas {
     width: calc(100% - 40px); /* Adjust width to consider padding and border */
     background-color: rgb(255, 255, 255);
     color: rgb(0, 0, 0);
-    margin-bottom: 5px;
+    margin-bottom: 0px;
 }
 
 /* Style for the dropdown menu items on hover */
@@ -186,6 +201,17 @@ canvas {
     position: absolute;
 }
 
+.filterButton.active {
+    background-color: #000; /* General active state */
+    color: #fff;
+}
+
+.filterButton.active.special-active {
+    background-color: #ff6600; /* Different active state for clicked filters */
+    color: #fff;
+}
+
+
 
 .tooltip {
     position: absolute;
@@ -200,78 +226,147 @@ canvas {
 
 
 /* Media queries */
-@media screen and (max-width: 375px) {
-    .about-page-link {
-        text-decoration: none; /* Remove underline */
-        color: inherit;
-        height: 90%;
-        width: 90%;
-        position: absolute;
-        top: 50%;
-        left: 65%;
-        transform: translate(-50%, -50%);
-        z-index: 1; /* Ensure the title is above the canvas */
-        text-align: center;
+@media (max-width: 480px){
+    body {
+        height:100vh;
+        width:100%;
     }
     
-    .ABOUT {
-        margin-left: -70%;
-        margin-top: -0.5%;
-        font-size: 5rem;
+    main {
+        width: 100vw;
+        overflow:hidden;
     }
+.about-page-link {
+    text-decoration: none; /* Remove underline */
+    background-color: none;
+    height: 20%;
+    width: 40%;
+    position: absolute;
+    top: 12%;
+    left: 25%;
+    transform: translate(-50%, -50%);
+    z-index: 1; /* Ensure the title is above the canvas */
+    text-align: center;
+}
 
-    .filtered-item img {
-        width: 350px; /* Set the desired width */
-        height: auto; /* Maintain aspect ratio */
-        position: absolute;
-    }
+.ABOUT {
+    margin-left: 0%;
+    margin-top: 5%;
+    font-size: 6.5rem;
+    width:30%;
+    background-color: none;
+    color:black;
+}
 
-    .OBJECTS {
-        margin-left: 60%;
-        margin-top: -15%;
-        font-size: 10rem;
-    }
+.main-page-link {
+    text-decoration: none; /* Remove underline */
+    color: inherit; /* Inherit text color from its parent */
+}
 
-    #colorFilter {
-        position: absolute;
-        top: 10px; /* Adjust the top position as needed */
-        right: -90%; /* Adjust the right position as needed */
-    }
-    
-    /* Adjust styling for the material filter */
-    #materialFilter {
-        position: absolute;
-        top: 10px; /* Adjust the top position as needed */
-        right: -52%; /* Adjust the right position as needed */
-    }
-    
-    /* Adjust styling for the MDM filter */
-    #MDMFilter {
-        position: absolute;
-        top: 10px; /* Adjust the top position as needed */
-        right: 0%; /* Adjust the right position as needed */
-    }
+.OBJECTS {
+    margin-left: 48%;
+    margin-top: -41%;
+    font-size:6.5rem;
+}
 
-    #colorFilter .dropdown-content button {
-        width: calc(100% - 50px); /* Adjust width to match color filter */
-    }
-    
-    #materialFilter .dropdown-content button {
-        width: calc(100%); /* Adjust width to match material filter */
-    }
-    
-    #MDMFilter .dropdown-content button {
-        width: calc(170%); /* Adjust width to match MDM filter */
-    }
+.main-title {
+    height: 40%;
+    width: 70%;
+    position: absolute;
+    top: 37%;
+    left: 55%;
+    transform: translate(-50%, -50%);
+    z-index: 1; /* Ensure the title is above the canvas */
+    text-align: center;
+    display:flex;
+    flex-direction: column;
+}
 
-    #colorFilter button,
+/* Adjust styling for the color filter */
+#colorFilter {
+    position: absolute;
+    top: -19.8%; /* Adjust the top position as needed */
+    right: -35%; /* Adjust the right position as needed */
+}
+
+/* Adjust styling for the material filter */
+#materialFilter {
+    position: absolute;
+    top: -20%; /* Adjust the top position as needed */
+    right: 7%; /* Adjust the right position as needed */
+}
+
+/* Adjust styling for the MDM filter */
+#MDMFilter {
+    position: absolute;
+    top: -20%; /* Adjust the top position as needed */
+    right: 60%; /* Adjust the right position as needed */
+}
+
+/* Adjust width of filter buttons within dropdown menus */
+#colorFilter .dropdown-content button {
+    width: calc(70%); /* Adjust width to match color filter */
+}
+
+#materialFilter .dropdown-content button {
+    width: calc(95%); /* Adjust width to match material filter */
+}
+
+#MDMFilter .dropdown-content button {
+    width: calc(100%); /* Adjust width to match MDM filter */
+}
+
+/* Add this CSS to your existing styles */
+#colorFilter button,
 #materialFilter button,
 #MDMFilter button {
     position: relative;
     display: block;
-    margin-bottom: 10px; /* Add margin between MDM filter buttons */
+    margin-bottom: 0px; /* Add margin between MDM filter buttons */
 }
 
+.filterButton.active.inverted {
+    background-color: #fff; /* Change background color */
+    color: #000; /* Change text color */
+}
+
+/* Dropdown button */
+.dropbtn {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 2rem;
+    border-radius: 20px;
+    padding: 10px 20px;
+    border: 2px solid rgb(0, 0, 0);
+    cursor: pointer;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    margin-top:0%;
+}
+
+/* Style for active dropdown button */
+.dropbtn.active {
+    background-color: #000; /* Change background color */
+    color: #fff;            /* Change text color */
+    border: 2px solid #fff;  /* Adjust border for better visibility */
+}
+
+/* Dropdown container (hidden by default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: none;
+    min-width: 160px;
+    z-index: 1;
+    padding: 0px;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+    padding: 0px;
+}
+
+/* Dropdown menu items */
 .dropdown-content button {
     font-family: 'Work Sans', sans-serif;
     font-size: 2rem;
@@ -280,30 +375,24 @@ canvas {
     border: 2px solid rgb(0, 0, 0);
     cursor: pointer;
     display: block;
-    width: calc(100% - 10px); /* Adjust width to consider padding and border */
+    width: calc(100% - 40px); /* Adjust width to consider padding and border */
     background-color: rgb(255, 255, 255);
     color: rgb(0, 0, 0);
-    margin-bottom: 5px;
+    margin-bottom: 0px;
+}
+
+#filteredItems {
+    display:contents;
+    height: 50vh;
+    width: 80%;
+ }
+
+ .filtered-item img {
+    width:350px; /* Set the desired width */
+    height: auto; /* Maintain aspect ratio */
+    position: absolute;
+
 }
 }
 
-@media screen and (min-width: 950px) {
-    .desktop-image--left,
-    .desktop-image--right {
-        display: block;
-    }
-
-    .text-overlay {
-        font-size: 1.8vw;
-    }
-
-    .text-container {
-        bottom: 35%;
-        right: 5%; 
-    }
-}
-
-@font-face {
-    font-family: 'Compagnon';
-    src: url('/assets/RhetorikSerif-LightItalic-trial.otf') format('woff2');
-}
+@media (min-width: 481px) and (max-width: 768px){}

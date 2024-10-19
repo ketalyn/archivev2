@@ -259,90 +259,132 @@ const imagePositions = {
     "sunglasses": { top: '750px', left: '16%' },
 
     // Mobile positions
-    "organizer-mobile": { top: '180px', left: '-10%' },
-    "toothbrush-mobile": { top: '250px', left: '40%' },
-    "toothpaste-mobile": { top: '450px', left: '-5%' },
+    "organizer-mobile": { top: '160px', left: '-10%' },
+    "toothbrush-mobile": { top: '250px', left: '30%' },
+    "toothpaste-mobile": { top: '450px', left: '-8%' },
     "toner-mobile": { top: '800px', left: '-2%' },
     "face lotion-mobile": { top: '1000px', left: '-10%' }, 
-    "lip mask-mobile": { top: '150px', left: '65%' }, 
-    "lip balm-mobile": { top: '1050px', left: '100%' },
-    "curl cream-mobile": { top: '730px', left: '55%' },
+    "lip mask-mobile": { top: '150px', left: '35%' }, 
+    "lip balm-mobile": { top: '1000px', left: '58%' },
+    "curl cream-mobile": { top: '730px', left: '35%' },
     "eyedrops-mobile": { top: '600px', left: '-30%' },
-    "gua sha-mobile": { top: '930px', left: '30%' },
-    "blackberry & bay-mobile": { top: '170px', left: '110%' },
-    "jo malone nectarine-mobile": { top: '370px', left: '40%' },
+    "gua sha-mobile": { top: '930px', left: '20%' },
+    "blackberry & bay-mobile": { top: '170px', left: '63%' },
+    "jo malone nectarine-mobile": { top: '370px', left: '30%' },
     "jo malone blackberry-mobile": { top: '300px', left: '-20%' },
-    "makeup bag-mobile": { top: '800px', left: '95%' },
-    "coasters-mobile": { top: '330px', left: '90%' },
-    "hairtie-mobile": { top: '950px', left: '75%' },
-    "herbal candy-mobile": { top: '670px', left: '115%' },
-    "starface-mobile": { top: '500px', left: '85%' },
-    "sunglasses-mobile": { top: '620px', left: '25%' },
+    "makeup bag-mobile": { top: '800px', left: '62%' },
+    "coasters-mobile": { top: '330px', left: '62%' },
+    "hairtie-mobile": { top: '950px', left: '55%' },
+    "herbal candy-mobile": { top: '670px', left: '72%' },
+    "starface-mobile": { top: '500px', left: '55%' },
+    "sunglasses-mobile": { top: '620px', left: '5%' },
     // Add more mobile positions as needed...
 };
 
 function generateFilterButtonsInDropdown(data, key) {
-    const uniqueValues = [...new Set(data.flatMap(item => item[key].split(', ')))];
-    const filterContainer = document.querySelector(`#${key}Filter .dropdown-content`);
-    uniqueValues.forEach(value => {
-        const button = document.createElement('button');
-        button.textContent = value;
-        button.classList.add('filterButton');
-        button.dataset.filterKey = key;
-        button.dataset.filterValue = value;
-        button.addEventListener('click', filterData);
-        filterContainer.appendChild(button);
-    });
+  const uniqueValues = [...new Set(data.flatMap(item => item[key].split(', ')))];
+  const filterContainer = document.querySelector(`#${key}Filter .dropdown-content`);
+  uniqueValues.forEach(value => {
+      const button = document.createElement('button');
+      button.textContent = value;
+      button.classList.add('filterButton');
+      button.dataset.filterKey = key;
+      button.dataset.filterValue = value;
+      button.addEventListener('click', (event) => {
+          event.stopPropagation(); // Prevent event bubbling
+          const isActive = button.classList.toggle('active'); // Toggle active state
+
+          // Find corresponding parent dropdown button
+          const dropdownButton = document.querySelector(`#${key}Filter .dropbtn`);
+
+          // If this button is active, add active class to dropdown button
+          if (isActive) {
+              dropdownButton.classList.add('active');
+          } else {
+              // If this button is not active, check if any other buttons are active
+              const activeButtons = document.querySelectorAll(`#${key}Filter .filterButton.active`);
+              if (activeButtons.length === 0) {
+                  dropdownButton.classList.remove('active'); // Remove active state from dropdown button if no active filters
+              }
+          }
+
+          filterData(); // Refresh data display
+      });
+
+      filterContainer.appendChild(button);
+  });
 }
 
 function generateMDMFilterButtonsInDropdown(data) {
-    const mdmValues = [...new Set(data.map(item => item.MDM))];
-    const mdmDropdownContainer = document.querySelector('#MDMFilter .dropdown-content');
-    mdmValues.forEach(value => {
-        const button = document.createElement('button');
-        button.textContent = value;
-        button.classList.add('filterButton');
-        button.dataset.filterKey = 'MDM';
-        button.dataset.filterValue = value;
-        button.addEventListener('click', filterData);
-        mdmDropdownContainer.appendChild(button);
-    });
+  const mdmValues = [...new Set(data.map(item => item.MDM))];
+  const mdmDropdownContainer = document.querySelector('#MDMFilter .dropdown-content');
+  mdmValues.forEach(value => {
+      const button = document.createElement('button');
+      button.textContent = value;
+      button.classList.add('filterButton');
+      button.dataset.filterKey = 'MDM';
+      button.dataset.filterValue = value;
+      
+      // Add event listener for MDM filter buttons
+      button.addEventListener('click', (event) => {
+          event.stopPropagation(); // Prevent event bubbling
+          const isActive = button.classList.toggle('active'); // Toggle active state
+
+          // Find corresponding parent dropdown button
+          const dropdownButton = document.querySelector(`#MDMFilter .dropbtn`);
+
+          // If this button is active, add active class to dropdown button
+          if (isActive) {
+              dropdownButton.classList.add('active');
+          } else {
+              // If this button is not active, check if any other buttons are active
+              const activeButtons = document.querySelectorAll(`#MDMFilter .filterButton.active`);
+              if (activeButtons.length === 0) {
+                  dropdownButton.classList.remove('active'); // Remove active state from dropdown button if no active filters
+              }
+          }
+
+          filterData(); // Refresh data display
+      });
+
+      mdmDropdownContainer.appendChild(button);
+  });
 }
 
 // Filter data function
 function filterData() {
-    const activeFilters = document.querySelectorAll('.filterButton.active');
-    const filteredData = jsonData.filter(item => {
-        return Array.from(activeFilters).every(filterButton => {
-            const filterKey = filterButton.dataset.filterKey;
-            const filterValue = filterButton.dataset.filterValue;
-            if (filterKey === 'MDM' && filterValue === "DOESN'T MOVE") {
-                return item[filterKey] === filterValue;
-            }
-            if (filterKey === 'ID') {
-                return item.item === filterValue;
-            }
-            return item[filterKey].includes(filterValue);
-        });
-    });
+  const activeFilters = document.querySelectorAll('.filterButton.active');
+  const filteredData = jsonData.filter(item => {
+      return Array.from(activeFilters).every(filterButton => {
+          const filterKey = filterButton.dataset.filterKey;
+          const filterValue = filterButton.dataset.filterValue;
+          if (filterKey === 'MDM' && filterValue === "DOESN'T MOVE") {
+              return item[filterKey] === filterValue;
+          }
+          if (filterKey === 'ID') {
+              return item.item === filterValue;
+          }
+          return item[filterKey].includes(filterValue);
+      });
+  });
 
-    const filteredItemsDiv = document.getElementById('filteredItems');
-    filteredItemsDiv.innerHTML = '';
-    filteredData.forEach(item => {
-        const itemContainer = document.createElement('div');
-        itemContainer.classList.add('filtered-item');
-        if (item.image_url) {
-            const imgElement = document.createElement('img');
-            imgElement.src = item.image_url;
-            imgElement.alt = item.item;
-            imgElement.id = item.item.toLowerCase().replace(' ', '-').replace('&', '').replace(' ', '');
-            itemContainer.appendChild(imgElement);
-        }
-        filteredItemsDiv.appendChild(itemContainer);
-    });
+  const filteredItemsDiv = document.getElementById('filteredItems');
+  filteredItemsDiv.innerHTML = '';
+  filteredData.forEach(item => {
+      const itemContainer = document.createElement('div');
+      itemContainer.classList.add('filtered-item');
+      if (item.image_url) {
+          const imgElement = document.createElement('img');
+          imgElement.src = item.image_url;
+          imgElement.alt = item.item;
+          imgElement.id = item.item.toLowerCase().replace(' ', '-').replace('&', '').replace(' ', '');
+          itemContainer.appendChild(imgElement);
+      }
+      filteredItemsDiv.appendChild(itemContainer);
+  });
 
-    // Call setPositionsForFilteredItems after filtering
-    setPositionsForFilteredItems();
+  // Call setPositionsForFilteredItems after filtering
+  setPositionsForFilteredItems();
 }
 
 // Generate filter buttons inside dropdown menu for Color and Materials
@@ -352,65 +394,79 @@ generateFilterButtonsInDropdown(jsonData, 'material');
 // Generate MDM filter buttons inside dropdown menu
 generateMDMFilterButtonsInDropdown(jsonData);
 
-document.querySelectorAll('.filterButton').forEach(button => {
-    button.addEventListener('click', () => {
-        button.classList.toggle('active'); // Toggle active class
-        filterData();
-        const isActive = button.classList.contains('active'); // Check if button is active after toggling
-        button.classList.toggle('inverted', !isActive); // Add or remove inverted class based on the current state
-    });
+// Add event listeners for dropdown buttons to toggle the active class and handle clear functionality
+document.querySelectorAll('.dropbtn').forEach(dropdownButton => {
+  dropdownButton.addEventListener('click', () => {
+      const filterKey = dropdownButton.dataset.filterKey; // Get the filter key from the dropdown button
+      const activeButtons = document.querySelectorAll(`#${filterKey}Filter .filterButton.active`);
+
+      // If there are active buttons, clear their active states
+      if (activeButtons.length > 0) {
+          activeButtons.forEach(button => {
+              button.classList.remove('active'); // Remove active class from filter buttons
+          });
+          dropdownButton.classList.remove('active'); // Remove active class from the dropdown button
+      } else {
+          // If no buttons are active, just toggle the dropdown button's active state
+          dropdownButton.classList.toggle('active');
+      }
+
+      // Trigger data filtering after clearing selections or toggling the dropdown
+      filterData();
+  });
 });
 
 
 
+
+// Ensure filterData is called after each click to refresh the displayed items
 filterData(); // Initial data display
 
-
 function setPositionsForFilteredItems() {
-    const filteredItems = document.querySelectorAll('.filtered-item');
+  const filteredItems = document.querySelectorAll('.filtered-item');
 
-    filteredItems.forEach(item => {
-        const img = item.querySelector('img');
-        if (img !== null) {
-            const itemName = img.alt;
-            console.log('Item Name:', itemName);
+  filteredItems.forEach(item => {
+      const img = item.querySelector('img');
+      if (img !== null) {
+          const itemName = img.alt;
+          console.log('Item Name:', itemName);
 
-            // Determine if it's a mobile device
-            const isMobile = window.matchMedia("(max-width: 768px)").matches;
+          // Determine if it's a mobile device
+          const isMobile = window.matchMedia("(max-width: 768px)").matches;
 
-            if (itemName in imagePositions) {
-                const position = isMobile ? imagePositions[`${itemName}-mobile`] : imagePositions[itemName];
-                img.style.top = position.top;
-                img.style.left = position.left;
-            }
-        } else {
-            console.error("Image element is null.");
-        }
-    });
+          if (itemName in imagePositions) {
+              const position = isMobile ? imagePositions[`${itemName}-mobile`] : imagePositions[itemName];
+              img.style.top = position.top;
+              img.style.left = position.left;
+          }
+      } else {
+          console.error("Image element is null.");
+      }
+  });
 }
 
 function showTooltip(img, positionChanges) {
-    // Remove any existing tooltips first
-    hideTooltip();
+  // Remove any existing tooltips first
+  hideTooltip();
 
-    // Create a new tooltip element
-    const tooltip = document.createElement('div');
-    tooltip.textContent = `Position Changes: ${positionChanges}`;
-    tooltip.classList.add('tooltip');
+  // Create a new tooltip element
+  const tooltip = document.createElement('div');
+  tooltip.textContent = `Position Changes: ${positionChanges}`;
+  tooltip.classList.add('tooltip');
 
-    // Position the tooltip relative to the image
-    const imgRect = img.getBoundingClientRect();
-    tooltip.style.top = `${imgRect.top - tooltip.offsetHeight}px`; // Adjust the position as needed
-    tooltip.style.left = `${imgRect.left}px`;
+  // Position the tooltip relative to the image
+  const imgRect = img.getBoundingClientRect();
+  tooltip.style.top = `${imgRect.top - tooltip.offsetHeight}px`; // Adjust the position as needed
+  tooltip.style.left = `${imgRect.left}px`;
 
-    // Append the tooltip to the document body
-    document.body.appendChild(tooltip);
+  // Append the tooltip to the document body
+  document.body.appendChild(tooltip);
 }
 
 function hideTooltip() {
-    // Remove any existing tooltips from the document body
-    const tooltip = document.querySelector('.tooltip');
-    if (tooltip) {
-        tooltip.remove();
-    }
+  // Remove any existing tooltips from the document body
+  const tooltip = document.querySelector('.tooltip');
+  if (tooltip) {
+      tooltip.remove();
+  }
 }
